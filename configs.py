@@ -1,34 +1,16 @@
-from os import getenv
+from os import environ
 
-class Config:
-    API_ID = int(getenv("API_ID", "21419016"))
-    API_HASH = getenv("API_HASH", "79198e1eb4cfd0f771a89d83b9144e7e")
-    BOT_TOKEN = getenv("BOT_TOKEN", "xxxxxxxxxxxxxxx")
+API_ID = int(environ.get("API_ID", "21419016"))
+API_HASH = environ.get("API_HASH", "79198e1eb4cfd0f771a89d83b9144e7e")
+BOT_TOKEN = environ.get("BOT_TOKEN", "8210282783:AAG7IqSIjZyum9G75GwcdYI7gjn3ng3Ge3g")
 
-    # Admin / Owner IDs
-    SUDO = list(map(int, getenv(
-        "SUDO",
-        "7554081592 xxxxxxxxxxxxxx 7564050858 5656436152"
-    ).split()))
+# Make Bot Admin In Log Channel With Full Rights
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1003528228945"))
+ADMINS = int(environ.get("ADMINS", "7736226123"))
 
-    MONGO_URI = getenv(
-        "MONGO_URI",
-        "mongodb+srv://melodysotto4_db_user:BCUKIKDEAqFEzeCj@cluster0.trrt89o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    )
+# Warning - Give Db uri in deploy server environment variable, don't give in repo.
+DB_URI = environ.get("DB_URI", "mongodb+srv://melodysotto4_db_user:BCUKIKDEAqFEzeCj@cluster0.trrt89o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") # Warning - Give Db uri in deploy server environment variable, don't give in repo.
+DB_NAME = environ.get("DB_NAME", "vjjoinrequetbot")
 
-    # Posts to copy
-    POSTS = [
-        "https://t.me/forward_hack_lnx/8",
-        "https://t.me/forward_hack_lnx/10"
-    ]
-
-    # 🚫 ILLEGAL WORDS (BOT SIDE FILTER)
-    ILLEGAL_WORDS = [
-        "@controllerbot",
-        "creatings",
-        "tasks",
-        "tasks.",
-        "accomplish"
-    ]
-
-cfg = Config()
+# If this is True Then Bot Accept New Join Request 
+NEW_REQ_MODE = bool(environ.get('NEW_REQ_MODE', False))
